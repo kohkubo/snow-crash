@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 def decrypt(encrypted):
     decrypted = ""
@@ -13,6 +13,6 @@ with open('token', 'rb') as f:
     encrypted = f.read().strip()
 
 # Decrypt the content
-decrypted = decrypt(encrypted.decode('latin-1'))
+decrypted = decrypt(encrypted)
 
-print(f"Decrypted: {decrypted}")
+print("Decrypted: " + decrypted)
