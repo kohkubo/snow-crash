@@ -42,7 +42,7 @@ for i in /opt/openarenaserver/* ; do
 done
 ```
 
-`/opt/openarenaserver`ディレクトリ内のファイルを実行しているため、`/opt/openarenaserver`ディレクトリに`getflag.sh`を作成し、`getflag`を実行するスクリプトを作成する
+/opt/openarenaserver`ディレクトリ内のファイルを実行しているため、`/opt/openarenaserver`ディレクトリに`getflag.sh`を作成し、`getflag`を実行するスクリプトを作成する
 
 ```sh
 echo '#!/bin/sh' > /opt/openarenaserver/getflag.sh
