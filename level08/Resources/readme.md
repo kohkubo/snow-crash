@@ -1,3 +1,4 @@
+## ~に存在するファイルを確認
 ```sh
 level08@SnowCrash:~$ ls -l
 total 16
@@ -5,7 +6,7 @@ total 16
 -rw-------  1 flag08 flag08    26 Mar  5  2016 token
 ```
 
-ghidraで逆アセンブルする。
+## ghidraで逆アセンブル
 ```c
 void main(int param_1,undefined4 *param_2)
 
@@ -46,7 +47,12 @@ void main(int param_1,undefined4 *param_2)
 }
 ```
 
-argv[1]をopen、readしwriteしているが、`token` 文字列を`strstr`で部分一致チェックしているため、`token` 文字列含めないようにして`token file`を渡す必要がある。
+## 関数のポイント
+- `strstr`を使用し、`argv[1]`に`token`文字列が含まれているか確認している。もし、含まれている場合はエラーになる。
+- `argv[1]`で指定されたファイルを開き`read`した内容を出力している。
+
+## エクスプロイト
+`token` 文字列含めないようにして`token file`を指すようなシンボリックリンクを作成すれば`strstr`のチェックを回避できる。
 
 ```sh
 level08@SnowCrash:~$  ln -s /home/user/level08/token /tmp/hoge

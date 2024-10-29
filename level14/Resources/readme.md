@@ -7,7 +7,7 @@ level14@SnowCrash:~$ file /bin/getflag
 /bin/getflag: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x3fcebc416e32d2b675c7ea7585328122caf0f15d, not stripped
 ```
 
-### ghidraで逆アセンブルする
+## ghidraで逆アセンブルする
 ```c
 undefined4 main(void)
 
@@ -162,8 +162,8 @@ LAB_08048ead:
   __stack_chk_fail();
 }
 ```
-
-getflagには全てのパスワードが文字列リテラルとして書かれており、`ft_des();`を通してパスワードを表示している。
+## エクスプロイト
+`getflag`には全てのパスワードが文字列リテラルとして書かれており、`ft_des();`を通してパスワードを表示している。
 `ft_des("g <t61:|4_|!@IF.-62FH&G~DCK/Ekrvvdwz?v|");` を実行するとflag14のパスワードが得られる。
 
 ###　実行
