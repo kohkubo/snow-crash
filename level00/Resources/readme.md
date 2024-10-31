@@ -17,6 +17,8 @@ level00@SnowCrash:~$ cat /usr/sbin/john
 cdiiddwpgswtgt
 ```
 
+シーザー暗号なので解読するスクリプトをやる
+
 ```sh
 for i in {1..25}; do
 echo -n "ROT$i: "
@@ -36,3 +38,10 @@ tr: 文字列の変換を行うコマンド
 
 printf: 書式付きで文字列を出力するコマンド
 cut: 文字列を切り取るコマンド
+
+## getflag
+
+```sh
+su flag01
+getflag
+```
