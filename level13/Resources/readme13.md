@@ -10,14 +10,22 @@ d--x--x--x 1 root    users    340 Aug 30  2015 ..
 ```
 
 ```sh
-level13@SnowCrash:~$ ltrace ./level13
-__libc_start_main(0x804858c, 1, 0xbffff7e4, 0x80485f0, 0x8048660 <unfinished ...>
-getuid()                                                                                                                                    = 2013
-getuid()                                                                                                                                    = 2013
-printf("UID %d started us but we we expe"..., 2013UID 2013 started us but we we expect 4242
-)                                                                                         = 42
-exit(1 <unfinished ...>
-+++ exited (status 1) +++
+void main(void)
+{
+  __uid_t _Var1;
+  undefined4 uVar2;
+
+  _Var1 = getuid();
+  if (_Var1 != 0x1092) {
+    _Var1 = getuid();
+    printf("UID %d started us but we we expect %d\n",_Var1,0x1092);
+                    /* WARNING: Subroutine does not return */
+    exit(1);
+  }
+  uVar2 = ft_des("boe]!ai0FB@.:|L6l@A?>qJ}I");
+  printf("your token is %s\n",uVar2);
+  return;
+}
 ```
 
 

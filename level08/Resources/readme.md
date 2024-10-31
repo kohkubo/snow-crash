@@ -9,7 +9,6 @@ total 16
 ## ghidraで逆アセンブル
 ```c
 void main(int param_1,undefined4 *param_2)
-
 {
   char *pcVar1;
   int __fd;
@@ -59,3 +58,5 @@ level08@SnowCrash:~$  ln -s /home/user/level08/token /tmp/hoge
 level08@SnowCrash:~$  ./level08 /tmp/hoge
 quif5eloekouj29ke0vouxean
 ```
+
+su flag08でpassいれて、getflagを実行する。

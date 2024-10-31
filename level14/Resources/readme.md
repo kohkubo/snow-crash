@@ -10,7 +10,6 @@ level14@SnowCrash:~$ file /bin/getflag
 ## ghidraで逆アセンブルする
 ```c
 undefined4 main(void)
-
 {
   bool bVar1;
   FILE *__stream;
