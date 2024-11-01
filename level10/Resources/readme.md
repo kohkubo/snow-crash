@@ -96,7 +96,7 @@ void main(int ac, char **argv)
 ## 関数のポイント
 `access((char *)argv[1],R_OK);` は実ユーザーでファイル読み取り権限を確認するため、`level10`ユーザーが`token`を引数に渡すとでエラーになる。
 一方、`open(file_name,O_RDONLY);` は実効ユーザーである`flag10` の権限でファイルアクセス権限を確認する。
-したがって、`access((char *)argv[1],R_OK);`をうまく突破すれば`token`の中身を確認することができる。
+したがって、`access((char *)argv[1],R_OK);`をうまく突破すれば`token`の中身を確認できる。
 
 `TOCTOU`というのがある。チェックと使用タイミングのズレがあると問題になる。つまり、`open` と`access` の間に脆弱性がある。
 https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use
