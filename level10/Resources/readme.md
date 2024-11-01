@@ -118,6 +118,8 @@ echo 'done' >> /tmp/script
 chmod +x /tmp/script
 ```
 
+inet_addr();がlocalhostのような文字列を127.0.0.1として解決してくれない。
+
 ### 受信した文字列をファイルに保存するスクリプト
 ```sh
 echo '#!/bin/bash' > /tmp/script1
